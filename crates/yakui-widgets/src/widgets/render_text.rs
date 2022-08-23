@@ -167,7 +167,7 @@ pub fn paint_text(
     let fonts = dom.get_global_or_init(Fonts::default);
     let font = match fonts.get(font) {
         Some(font) => font,
-        None => return,
+        None => panic!("we tried to use the font {:?}, but it was not found.", font),
     };
 
     let text_global = dom.get_global_or_init(TextGlobalState::new_late_binding);

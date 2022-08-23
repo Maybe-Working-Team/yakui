@@ -16,13 +16,14 @@ pub struct TextGlobalState {
 impl TextGlobalState {
     pub fn new<T: GlyphCache + 'static>(glyph_cache: T) -> Self {
         Self {
-            glyph_cache: Rc::new(RefCell::new(glyph_cache)),
+            glyph_cache: Rc::new(RefCell::new(glyph_cache)) as Rc<RefCell<dyn GlyphCache>>,
         }
     }
 
     pub fn new_late_binding() -> Self {
         Self {
-            glyph_cache: Rc::new(RefCell::new(LateBindingGlyphCache::new())),
+            glyph_cache: Rc::new(RefCell::new(LateBindingGlyphCache::new()))
+                as Rc<RefCell<dyn GlyphCache>>,
         }
     }
 }
