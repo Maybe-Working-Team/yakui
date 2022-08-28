@@ -140,6 +140,17 @@ impl Dom {
         }
     }
 
+    /// Set a piece of DOM-global state.
+    ///
+    /// This is intended for any state that is global. It's not a perfect fit
+    /// for scoped state like themes.
+    pub fn set_global<T>(&self, value: T) -> Option<T>
+    where
+        T: 'static + Clone,
+    {
+        self.inner.globals.borrow_mut().insert(value)
+    }
+
     /// Get a piece of DOM-global state or initialize it with the given
     /// function.
     ///
