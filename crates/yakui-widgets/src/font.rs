@@ -29,7 +29,7 @@ impl Fonts {
 
         #[cfg(feature = "default-fonts")]
         {
-            static DEFAULT_BYTES: &[u8] = include_bytes!("../assets/Roboto-Regular.ttf");
+            static DEFAULT_BYTES: &[u8] = include_bytes!("../assets/Cairo-Regular.ttf");
 
             font_system
                 .db_mut()
